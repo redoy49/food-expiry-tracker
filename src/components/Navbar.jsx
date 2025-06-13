@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
+import logo from "../assets/logo.png"
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -58,9 +59,10 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="btn p-0 btn-ghost text-lg md:text-xl">
-          Food Expiry Tracker
-        </a>
+        <div className="w-12 h-12">
+          <img className="w-full h-full object-contain" src={logo} alt="" /> 
+        </div>
+        <span className="font-bold">E-Food</span>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu md:text-base menu-horizontal px-1">{navLinks}</ul>
@@ -76,7 +78,7 @@ const Navbar = () => {
               title={user.displayName}
             />
             <button
-              className="btn text-base md:px-6 md:py-5 rounded-full"
+              className="btn text-base md:px-6 md:py-5 rounded-md"
               onClick={handleLogout}
             >
               Logout
@@ -86,13 +88,13 @@ const Navbar = () => {
           <div className="flex gap-3 md:gap-6">
             <NavLink
               to="/login"
-              className="btn text-base md:px-6 md:py-5 rounded-lg"
+              className="btn text-base md:px-6 md:py-5 rounded-md"
             >
               Login
             </NavLink>
             <NavLink
               to="/register"
-              className="btn text-base md:px-6 md:py-5 rounded-lg"
+              className="btn text-base md:px-6 md:py-5 rounded-md"
             >
               Register
             </NavLink>
