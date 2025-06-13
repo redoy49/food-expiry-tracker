@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -10,23 +10,23 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout().then(() => {
-      toast.success('You successfully logout.')
+      toast.success("You successfully logout.");
       navigate("/login");
     });
   };
 
   const navLinks = (
     <>
-      <li>
+      <li className="mr-6">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
+      <li className="mr-6">
         <NavLink to="/fridge">Fridge</NavLink>
       </li>
-      <li>
+      <li className="mr-6">
         <NavLink to="/add-food">Add Food</NavLink>
       </li>
-      <li>
+      <li className="mr-6">
         <NavLink to="/my-items">My Items</NavLink>
       </li>
     </>
@@ -60,7 +60,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="w-12 h-12">
-          <img className="w-full h-full object-contain" src={logo} alt="" /> 
+          <img className="w-full h-full object-contain" src={logo} alt="" />
         </div>
         <span className="font-bold">E-Food</span>
       </div>
@@ -88,13 +88,13 @@ const Navbar = () => {
           <div className="flex gap-3 md:gap-6">
             <NavLink
               to="/login"
-              className="btn text-base md:px-6 md:py-5 rounded-md"
+              className="btn btn-secondary text-base md:px-6 md:py-5 rounded-md"
             >
               Login
             </NavLink>
             <NavLink
               to="/register"
-              className="btn text-base md:px-6 md:py-5 rounded-md"
+              className="btn btn-secondary text-base md:px-6 md:py-5 rounded-md"
             >
               Register
             </NavLink>
