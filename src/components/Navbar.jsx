@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout().then(() => {
-      // toast.success hobe
+      toast.success('You successfully logout.')
       navigate("/login");
     });
   };
@@ -58,7 +59,9 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="btn p-0 btn-ghost text-lg md:text-xl">Food Expiry Tracker</a>
+        <a className="btn p-0 btn-ghost text-lg md:text-xl">
+          Food Expiry Tracker
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu md:text-base menu-horizontal px-1">{navLinks}</ul>
@@ -71,10 +74,7 @@ const Navbar = () => {
               src={user?.photoURL}
               alt=""
               id="my-anchor-element"
-            />
-            <Tooltip
-              anchorSelect="#my-anchor-element"
-              content={user.displayName}
+              title={user.displayName}
             />
             <button
               className="btn text-base md:px-6 md:py-5 rounded-full"
