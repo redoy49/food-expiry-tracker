@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router";
 
 const FridgeCard = ({ food }) => {
-  const { imageUrl, quantity, category, foodTitle } = food;
+  const { imageUrl, quantity, category, foodTitle, _id } = food;
 
   return (
     <div className="w-full bg-slate-50 rounded-xl">
@@ -25,7 +26,9 @@ const FridgeCard = ({ food }) => {
           </span>
           <span className="font-medium">Quantity: {quantity}</span>
         </div>
-        <button className="btn btn-secondary w-full">See Details</button>
+        <Link to={`/food-details/${food._id}`}>
+          <button className="btn btn-secondary w-full">See Details</button>
+        </Link>
       </div>
     </div>
   );

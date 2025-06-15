@@ -13,11 +13,11 @@ const AddFood = () => {
     const formData = new FormData(form);
     const newFood = Object.fromEntries(formData.entries());
     newFood.email = user?.email;
-    newFood.addDate = new Date().toISOString().split("T")[0];
+    newFood.addDate = new Date();
 
     console.log(newFood);
 
-    apiUrl
+    apiUrl 
       .post("/foods", newFood)
       .then((res) => {
         const data = res.data;
@@ -79,6 +79,7 @@ const AddFood = () => {
           </div>
           <textarea
             className="textarea w-full"
+            name="description"
             placeholder="Description"
           ></textarea>
           <div>

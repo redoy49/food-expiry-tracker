@@ -7,6 +7,7 @@ import Register from "../pages/Register/Register";
 import Fridge from "../pages/Fridge/Fridge";
 import AddFood from "../pages/AddFood/AddFood";
 import MyItems from "../pages/MyItems/MyItems";
+import FoodDetails from "../pages/FoodDetails/FoodDetails";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: () => fetch('http://localhost:3000/expire-soon'),
         element: <Home />,
       },
       {
@@ -34,7 +36,13 @@ const router = createBrowserRouter([
         element: <AddFood />,
       },
       {
-        path: "/my-items",
+        path: "/food-details/:id",
+        loader: ({params}) => fetch(`http://localhost:3000/food-details/${params.id}`),
+        element: <FoodDetails/>,
+      },
+      {
+        path: "/my-items/:email",
+        loader: ({params}) => fetch(`http://localhost:3000/my-items/${params.email}`),
         element: <MyItems />,
       },
     ],

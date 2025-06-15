@@ -27,7 +27,7 @@ const Navbar = () => {
         <NavLink to="/add-food">Add Food</NavLink>
       </li>
       <li className="mr-6">
-        <NavLink to="/my-items">My Items</NavLink>
+        <NavLink to={`/my-items/${user?.email}`}>My Items</NavLink>
       </li>
     </>
   );
