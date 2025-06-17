@@ -8,6 +8,7 @@ import Fridge from "../pages/Fridge/Fridge";
 import AddFood from "../pages/AddFood/AddFood";
 import MyItems from "../pages/MyItems/MyItems";
 import FoodDetails from "../pages/FoodDetails/FoodDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch('http://localhost:3000/expire-soon'),
+        loader: () => fetch("http://localhost:3000/expire-soon"),
         element: <Home />,
       },
       {
@@ -33,17 +34,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-food",
-        element: <AddFood />,
+        element: (
+          <PrivateRoute>
+            <AddFood />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/food-details/:id",
-        loader: ({params}) => fetch(`http://localhost:3000/food-details/${params.id}`),
-        element: <FoodDetails/>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/food-details/${params.id}`),
+        element: <FoodDetails />,
       },
       {
         path: "/my-items/:email",
-        loader: ({params}) => fetch(`http://localhost:3000/my-items/${params.email}`),
-        element: <MyItems />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/my-items/${params.email}`),
+        element: (
+          <PrivateRoute>
+            <MyItems />
+          </PrivateRoute>
+        ),
       },
     ],
     errorElement: <NotFound />,

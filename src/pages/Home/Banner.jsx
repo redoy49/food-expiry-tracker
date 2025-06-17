@@ -17,10 +17,9 @@ const Banner = () => {
           delay: 6000,
           disableOnInteraction: false,
         }}
-        modules={[Autoplay, Navigation, Pagination, A11y]}
+        modules={[Autoplay, Pagination, A11y]}
         spaceBetween={50}
         slidesPerView={1}
-        navigation
         pagination={{ clickable: true }}
         loop={true}
       >
@@ -50,7 +49,7 @@ const Banner = () => {
         <SwiperSlide>
           <div className="flex justify-center items-center max-h-[450px] relative bg-slate-100">
             <img className="w-full" src={food} alt="" />
-              <div className="absolute inset-0 bg-black/40"></div>
+            <div className="absolute inset-0 bg-black/40"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white font-bold text-center p-4">
               <h2 className="text-6xl font-bold mb-4">
                 Expiry Dates, Simplified
@@ -65,7 +64,7 @@ const Banner = () => {
         <SwiperSlide>
           <div className="flex justify-center items-center max-h-[450px] relative bg-slate-100">
             <img className="w-full" src={food2} alt="" />
-              <div className="absolute inset-0 bg-black/40"></div>
+            <div className="absolute inset-0 bg-black/40"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white font-bold text-center p-4">
               <h2 className="text-6xl font-bold mb-4">
                 Smart Food, Zero Waste
