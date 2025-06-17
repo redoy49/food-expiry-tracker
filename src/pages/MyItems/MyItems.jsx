@@ -1,39 +1,66 @@
-import React from 'react';
-import { Link, useLoaderData } from 'react-router';
-import { MdDelete, MdUpdate } from "react-icons/md";
+import React, { useState } from "react";
+import { useLoaderData } from "react-router";
+import Swal from "sweetalert2";
+import apiUrl from "../../utils/apiUrl";
 
 const MyItems = () => {
-  const myItems = useLoaderData()
-  console.log(myItems);
-  // const handleDelete = (_id) => {
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, delete it!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       fetch(`https://roommate-finder-server-xi.vercel.app/lists/${_id}`, {
-  //         method: "DELETE",
-  //       })
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           if (data.deletedCount) {
-  //             const newLists = lists.filter((list) => list._id !== _id);
-  //             setLists(newLists);
-  //             Swal.fire({
-  //               title: "Deleted!",
-  //               text: "Your file has been deleted.",
-  //               icon: "success",
-  //             });
-  //           }
-  //         });
-  //     }
-  //   });
-  // };
+  const myItems = useLoaderData();
+  const [foods, setFoods] = useState(myItems);
+  const [selectedFood, setSelectedFood] = useState(null);
+
+  const handleUpdateFood = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const formData = new FormData(form);
+    const newFood = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await apiUrl.patch(
+        `/update-food/${selectedFood._id}`,
+        newFood
+      );
+
+      if (res.data.modifiedCount > 0) {
+        Swal.fire("Updated!", "Your food was updated.", "success");
+
+        const updatedList = foods.map((item) =>
+          item._id === selectedFood._id ? { ...item, ...newFood } : item
+        );
+        setFoods(updatedList);
+        setSelectedFood(null);
+      }
+    } catch (err) {
+      console.error("Update failed", err);
+      Swal.fire("Error", "Failed to update item", "error");
+    }
+  };
+
+  const handleDeleteFood = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const res = await apiUrl.delete(`/delete-food/${_id}`);
+          if (res.data.deletedCount) {
+            const deleteFood = foods.filter((food) => food._id !== _id);
+            setFoods(deleteFood);
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          }
+        } catch (error) {
+          console.error("Delete failed:", error);
+          Swal.fire("Error!", "Something went wrong while deleting.", "error");
+        }
+      }
+    });
+  };
 
   return (
     <div className="overflow-x-auto">
@@ -41,32 +68,91 @@ const MyItems = () => {
         <thead>
           <tr>
             <th>Title</th>
-            <th>Action</th>
-            <th>Action</th>
+            <th>Update</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          {myItems.map((item) => (
+          {foods.map((item) => (
             <tr key={item._id}>
-              <td>{item.foodTitle}</td>
+              <td className="text-base">{item.foodTitle}</td>
               <td>
-                <Link to={`/update/${item._id}`}>
-                  {/* <MdUpdate className="cursor-pointer" size={20} /> */}
-                  <button className="btn btn-sm btn-secondary">Update</button>
-                </Link>
+                <button
+                  className="btn btn-sm btn-secondary"
+                  onClick={() => {
+                    setSelectedFood(item);
+                    document.getElementById("update_modal").showModal();
+                  }}
+                >
+                  Update
+                </button>
               </td>
               <td>
-                {/* <MdDelete
-                  // onClick={() => handleDelete(item._id)}
-                  className="cursor-pointer"
-                  size={20}
-                /> */}
-                  <button className="btn btn-sm btn-secondary">Delete</button>
+                <button
+                  onClick={() => handleDeleteFood(item._id)}
+                  className="btn btn-sm btn-secondary"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      <dialog id="update_modal" className="modal">
+        <div className="modal-box">
+          <form onSubmit={handleUpdateFood}>
+            <h3 className="font-bold text-lg">Update Your Food</h3>
+            <input
+              type="text"
+              name="imageUrl"
+              className="input input-bordered w-full my-4"
+              defaultValue={selectedFood?.imageUrl}
+            />
+            <input
+              type="text"
+              name="foodTitle"
+              className="input input-bordered w-full my-4"
+              defaultValue={selectedFood?.foodTitle}
+            />
+            <select
+              defaultValue={"Select a category"}
+              name="category"
+              className="select w-full"
+            >
+              <option disabled={true}>Select a category</option>
+              <option>Crimson</option>
+              <option>Amber</option>
+              <option>Velvet</option>
+            </select>
+            <input
+              type="text"
+              name="quantity"
+              className="input input-bordered w-full my-4"
+              defaultValue={selectedFood?.quantity}
+            />
+            <input type="date" name="expireDate" className="input w-full" />
+            <textarea
+              className="textarea w-full mt-4"
+              name="description"
+              defaultValue={selectedFood?.description}
+            ></textarea>
+            <div className="modal-action justify-between">
+              <button type="submit" className="btn btn-sm btn-secondary">
+                Update Info
+              </button>
+              <button
+                type="button"
+                className="btn btn-sm btn-error text-white"
+                onClick={() => document.getElementById("update_modal").close()}
+              >
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </dialog>
     </div>
   );
 };

@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router";
 import Countdown from "react-countdown";
+import apiUrl from "../../utils/apiUrl";
+import useAuth from "../../hooks/useAuth";
 
 const FoodDetails = () => {
-  const food = useLoaderData();
+  const loadedFood = useLoaderData();
+  const { user } = useAuth();
+  const owner = loadedFood?.email === user?.email;
+
+  const [food, setFood] = useState(loadedFood); 
+
+  const handleAddNote = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const newNotes = Object.fromEntries(formData.entries());
+    newNotes.noteDate = new Date();
+
+    try {
+      const res = await apiUrl.patch(`/notes/${food._id}`, newNotes);
+      console.log(res);
+
+      // Update note in state manually
+      setFood((prev) => ({
+        ...prev,
+        note: [newNotes.note, ...(prev.note || [])], // prepend new note
+      }));
+
+      form.reset(); // optionally clear the form
+    } catch (err) {
+      console.error("Error adding note:", err);
+    }
+  };
+
   const countTime = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       return <span className="font-bold text-secondary">Expired</span>;
@@ -14,7 +44,6 @@ const FoodDetails = () => {
       </span>
     );
   };
-  console.log(food);
 
   return (
     <div className="flex flex-col justify-center items-center p-1 lg:p-4">
@@ -31,6 +60,35 @@ const FoodDetails = () => {
           Expire In:{" "}
           <Countdown date={new Date(food.expireDate)} renderer={countTime} />
         </p>
+      </div>
+
+      <div>
+        <form onSubmit={handleAddNote}>
+          <h3 className="text-xl font-semibold mb-2">Add your note</h3>
+          <textarea
+            placeholder="Your note here"
+            className="textarea textarea-secondary"
+            name="note"
+          ></textarea>
+          {owner ? (
+            <button className="btn btn-secondary">Add Note</button>
+          ) : (
+            <button className="btn btn-secondary" disabled>
+              Add Note
+            </button>
+          )}
+        </form>
+
+        <div className="mt-4">
+          <h3 className="font-semibold">Notes:</h3>
+          <ul>
+            {food?.note?.map((n, i) => (
+              <li key={i} className="border-b py-1">
+                {n}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

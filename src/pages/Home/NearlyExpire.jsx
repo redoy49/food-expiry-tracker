@@ -1,11 +1,13 @@
 import React from "react";
+import CountUp from "react-countup";
 import { Link } from "react-router";
 
 const NearlyExpire = ({ data }) => {
   return (
     <div className="p-1">
       <h2 className="text-3xl text-secondary text-center font-bold py-16">
-        Nearly Expire Items within 5 Days
+        Total Nearly Expire Foods :{" "}
+        <CountUp duration={5} start={0} end={data.length} />
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {data.map((item) => (
@@ -17,7 +19,7 @@ const NearlyExpire = ({ data }) => {
                 alt={item.foodTitle}
               />
               <div className="absolute top-3 right-3 bg-secondary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md flex items-center justify-center">
-                {item.expireDate.split('T')[0]}
+                {item.expireDate.split("T")[0]}
               </div>
             </div>
             <div className="p-6">

@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router";
+import CountUp from "react-countup";
 
 const ExpiredFood = ({ expired }) => {
   return (
     <div>
       <div>
         <h2 className="text-3xl text-secondary text-center font-bold py-16">
-          Already Expired Foods
+          Total Expired Foods :{" "}
+          <CountUp duration={5} start={0} end={expired.length} />
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {expired.map((expiredItem) => (

@@ -4,6 +4,9 @@ import { useLoaderData } from "react-router";
 import NearlyExpire from "./NearlyExpire";
 import apiUrl from "../../utils/apiUrl";
 import ExpiredFood from "./ExpiredFood";
+import NewsLetter from "./NewsLetter";
+import Testimonial from "./Testimonial";
+import Faq from "./Faq";
 
 const Home = () => {
   const data = useLoaderData();
@@ -26,6 +29,9 @@ const Home = () => {
       <Banner />
       <NearlyExpire data={data} />
       <ExpiredFood expired={expired} />
+      <Testimonial/>
+      <Faq/>
+      <NewsLetter/>
     </div>
   );
 };
