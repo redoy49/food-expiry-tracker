@@ -5,7 +5,6 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Fridge = () => {
   const [foods, setFoods] = useState([]);
-  console.log(foods);
   const [searchText, setSearchText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const axiosSecure = useAxiosSecure();
