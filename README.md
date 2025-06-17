@@ -3,7 +3,7 @@
 
 Food Expiry Tracker System, a responsive web application built using React. The system allows users to manage their food inventory and get alerts before items expire, helping to reduce food waste.
 
-## Live URL : [ Live Website](https://your-client-live-url.com)
+## Live URL : [ Live Website]( https://food-expiry-tracker-e6971.web.app/)
 
 ---
 
