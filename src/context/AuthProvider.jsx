@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+// import apiUrl from "../utils/apiUrl";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -10,6 +11,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
 import { AuthContext } from "./AuthContext";
+import axios from "axios";
 // import toast from "react-hot-toast";
 
 const googleProvider = new GoogleAuthProvider();
@@ -39,10 +41,52 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
-      setUser(loggedUser);
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      setUser(currentUser);
+      // const token = currentUser.accessToken;
+
+      if (currentUser?.email) {
+        axios
+          .post(
+            `${import.meta.env.VITE_API_URL}/jwt`,
+            {
+              email: currentUser?.email,
+            },
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+          });
+      } else {
+        localStorage.removeItem("token");
+      }
+
+      //   try {
+      //     const res = await axiosSecure.post(
+      //       "/jwt",
+      //       { token },
+      //       {
+      //         headers: {
+      //           Authorization: `Bearer ${token}`,
+      //         },
+      //         withCredentials: true,
+      //       }
+      //     );
+
+      //     console.log("JWT issued:", res.data);
+      //   } catch (err) {
+      //     console.error(
+      //       "Error setting JWT cookie:",
+      //       err.response?.data || err.message
+      //     );
+      //   }
+      // }
+
       setLoading(false);
     });
+
     return () => unsubscribe();
   }, []);
 

@@ -1,12 +1,29 @@
-import React, { useState } from "react";
-import { useLoaderData } from "react-router";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import Swal from "sweetalert2";
-import apiUrl from "../../utils/apiUrl";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyItems = () => {
-  const myItems = useLoaderData();
-  const [foods, setFoods] = useState(myItems);
+  const { email } = useParams();
+  console.log(email);
+  const [foods, setFoods] = useState([]);
   const [selectedFood, setSelectedFood] = useState(null);
+    const axiosSecure = useAxiosSecure()
+
+useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const res = await axiosSecure.get(`/my-items/${email}`);
+        setFoods(res.data);
+      } catch (error) {
+        console.error("Error fetching items:", error);
+      }
+    };
+
+    if (email) {
+      fetchItems();
+    }
+  }, [axiosSecure, email]);
 
   const handleUpdateFood = async (e) => {
     e.preventDefault();
@@ -16,7 +33,7 @@ const MyItems = () => {
     const newFood = Object.fromEntries(formData.entries());
 
     try {
-      const res = await apiUrl.patch(
+      const res = await axiosSecure.patch(
         `/update-food/${selectedFood._id}`,
         newFood
       );
@@ -48,7 +65,7 @@ const MyItems = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await apiUrl.delete(`/delete-food/${_id}`);
+          const res = await axiosSecure.delete(`/delete-food/${_id}`);
           if (res.data.deletedCount) {
             const deleteFood = foods.filter((food) => food._id !== _id);
             setFoods(deleteFood);
@@ -73,7 +90,7 @@ const MyItems = () => {
           </tr>
         </thead>
         <tbody>
-          {foods.map((item) => (
+          {foods?.map((item) => (
             <tr key={item._id}>
               <td className="text-base">{item.foodTitle}</td>
               <td>

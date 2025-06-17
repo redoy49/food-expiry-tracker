@@ -1,10 +1,12 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
-import apiUrl from "../../utils/apiUrl";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+// import apiUrl from "../../utils/apiUrl";
 
 const AddFood = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
 
   const handleAddFood = async (e) => {
     e.preventDefault();
@@ -17,7 +19,7 @@ const AddFood = () => {
 
     console.log(newFood);
 
-    apiUrl 
+    axiosSecure
       .post("/foods", newFood)
       .then((res) => {
         const data = res.data;

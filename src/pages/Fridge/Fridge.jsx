@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-import apiUrl from "../../utils/apiUrl";
+// import apiUrl from "../../utils/apiUrl";
 import FridgeCard from "./FridgeCard";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Fridge = () => {
   const [foods, setFoods] = useState([]);
+  console.log(foods);
   const [searchText, setSearchText] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     const fetchFoods = async () => {
       try {
-        const { data } = await apiUrl.get("/foods", {
+        const { data } = await axiosSecure.get("/foods", {
           params: {
             search: searchText,
             category: selectedCategory,
@@ -22,7 +25,7 @@ const Fridge = () => {
       }
     };
     fetchFoods();
-  }, [searchText, selectedCategory]);
+  }, [searchText, selectedCategory, axiosSecure]);
 
   return (
     <div>
@@ -47,10 +50,6 @@ const Fridge = () => {
           <option value="Snacks">Snacks</option>
         </select>
       </div>
-
-      <h2 className="text-3xl text-secondary font-medium text-center mb-6">
-        Fridge Page All Foods Here
-      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {foods.map((food) => (
           <FridgeCard key={food._id} food={food} />

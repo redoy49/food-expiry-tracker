@@ -17,7 +17,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("http://localhost:3000/expire-soon"),
         element: <Home />,
       },
       {
@@ -42,14 +41,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/food-details/:id",
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/food-details/${params.id}`),
         element: <FoodDetails />,
       },
       {
         path: "/my-items/:email",
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/my-items/${params.email}`),
         element: (
           <PrivateRoute>
             <MyItems />
