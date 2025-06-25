@@ -89,10 +89,10 @@ A responsive full-stack web application that helps users manage their food inven
 
 ```bash
 # Clone the client repo
-git clone https://github.com/your-username/food-expiry-tracker-client.git
+git clone https://github.com/redoy49/food-expiry-tracker-client.git
 
 # Clone the server repo
-git clone https://github.com/your-username/food-expiry-tracker-server.git
+git clone https://github.com/redoy49/food-expiry-tracker-server.git
 ```
 
 ### Step 2: Install Dependencies
@@ -146,8 +146,8 @@ npm run dev
 ## 🔗 Relevant Links
 
 - 🔴 Live Website: https://food-expiry-tracker-e6971.web.app/
-- 🟠 Client GitHub Repo: https://github.com/your-username/food-expiry-tracker-client
-- 🟢 Server GitHub Repo: https://github.com/your-username/food-expiry-tracker-server
+- 🟠 Client GitHub Repo: https://github.com/redoy49/food-expiry-tracker-client
+- 🟢 Server GitHub Repo: https://github.com/redoy49/food-expiry-tracker-server
 
 ---
 
@@ -167,7 +167,6 @@ This project was created as a full-stack development practice to implement authe
 ---
 
 ## 👤 Author
-
-🔗 Portfolio: [your-portfolio-link]  
-🐦 Twitter:   
+ 
+🐦 Twitter: mdredoyhasan49  
 📧 Email: mdredoyhasan49@gmail.com
