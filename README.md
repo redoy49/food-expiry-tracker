@@ -10,13 +10,6 @@ A responsive full-stack web application that helps users manage their food inven
 
 ---
 
-## 🖼️ Screenshot
-
-![Food Expiry Tracker Screenshot](https://i.ibb.co/9qptL1N/food-tracker-screenshot.png)
-<!-- 📌 Replace with your actual image URL or upload a screenshot to Imgur/ImgBB/GitHub -->
-
----
-
 ## 🚀 Technologies Used
 
 ### 🔧 Frontend:
