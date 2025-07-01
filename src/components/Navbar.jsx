@@ -33,8 +33,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className="sticky top-0 z-50 bg-success text-white">
-      <div className="navbar h-16 md:h-20">
+    <div className="sticky shadow-sm bg-slate-50 top-0 z-50 px-6">
+      <div className="navbar max-w-[1600px] mx-auto h-16 md:h-20">
         {/* Navbar Start */}
         <div className="navbar-start">
           {/* Mobile Dropdown */}
@@ -86,7 +86,7 @@ const Navbar = () => {
                 title={user?.displayName}
               />
               <button
-                className="btn btn-sm md:btn-md text-sm md:text-base"
+                className="btn btn-xs sm:btn-sm md:btn-md btn-success btn-outline rounded-sm"
                 onClick={handleLogout}
               >
                 Logout

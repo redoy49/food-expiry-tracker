@@ -28,22 +28,22 @@ import Navbar from "../components/Navbar";
 
 const MainLayout = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen">
       {/* Full-width Navbar background */}
-      <div className="sticky top-0 z-50 bg-success w-full">
-        <div className="max-w-[1600px] mx-auto">
+      <div className="sticky top-0 z-50 w-full">
+        <div className="mx-auto">
           <Navbar />
         </div>
       </div>
 
       {/* Page Content */}
-      <main className="flex-grow py-8 max-w-[1600px] mx-auto">
+      <main className="flex-grow max-w-[1600px] mx-auto">
         <Outlet />
       </main>
 
       {/* Full-width Footer background */}
       <div className="bg-success text-success-content w-full">
-        <div className="max-w-[1600px] mx-auto">
+        <div className="max-w-[1440px] mx-auto">
           <Footer />
         </div>
       </div>
