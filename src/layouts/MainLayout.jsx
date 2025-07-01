@@ -30,7 +30,7 @@ const MainLayout = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Full-width Navbar background */}
-      <div className="bg-success text-success-content w-full">
+      <div className="sticky top-0 z-50 bg-success w-full">
         <div className="max-w-[1600px] mx-auto">
           <Navbar />
         </div>

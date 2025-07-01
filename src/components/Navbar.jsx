@@ -10,96 +10,105 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout().then(() => {
-      toast.success("You successfully logout.");
+      toast.success("You successfully logged out.");
       navigate("/login");
     });
   };
 
   const navLinks = (
     <>
-      <li className="mr-6">
+      <li>
         <NavLink to="/">Home</NavLink>
       </li>
-      <li className="mr-6">
+      <li>
         <NavLink to="/fridge">Fridge</NavLink>
       </li>
-      <li className="mr-6">
+      <li>
         <NavLink to="/add-food">Add Food</NavLink>
       </li>
-      <li className="mr-6">
+      <li>
         <NavLink to={`/my-items/${user?.email}`}>My Items</NavLink>
       </li>
     </>
   );
 
   return (
-    <div className="navbar md:py-6">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-          >
-            {navLinks}
-          </ul>
-        </div>
-        <div className="w-12 h-12">
-          <img className="w-full h-full object-contain" src={logo} alt="" />
-        </div>
-        <span className="font-bold">E-Food</span>
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu md:text-base menu-horizontal px-1">{navLinks}</ul>
-      </div>
-      <div className="navbar-end z-10">
-        {user ? (
-          <div className="flex items-center gap-4">
-            <img
-              className="w-10 h-10 rounded-full object-cover"
-              src={user?.photoURL}
-              alt=""
-              id="my-anchor-element"
-              title={user.displayName}
-            />
-            <button
-              className="btn text-base md:px-6 md:py-5 rounded-md"
-              onClick={handleLogout}
-            >
-              Logout
+    <div className="sticky top-0 z-50 bg-success text-white">
+      <div className="navbar h-16 md:h-20">
+        {/* Navbar Start */}
+        <div className="navbar-start">
+          {/* Mobile Dropdown */}
+          <div className="dropdown">
+            <button tabIndex={0} className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
             </button>
-          </div>
-        ) : (
-          <div className="flex gap-3 md:gap-6">
-            <NavLink
-              to="/login"
-              className="btn btn-secondary text-base md:px-6 md:py-5 rounded-md"
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-black"
             >
-              Login
-            </NavLink>
-            <NavLink
-              to="/register"
-              className="btn btn-secondary text-base md:px-6 md:py-5 rounded-md"
-            >
-              Register
-            </NavLink>
+              {navLinks}
+            </ul>
           </div>
-        )}
+
+          {/* Logo + Brand */}
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="logo" className="w-10 h-10 object-contain" />
+            <span className="text-xl font-semibold">E-Food</span>
+          </div>
+        </div>
+
+        {/* Navbar Center */}
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1 text-base gap-4">{navLinks}</ul>
+        </div>
+
+        {/* Navbar End */}
+        <div className="navbar-end">
+          {user ? (
+            <div className="flex items-center gap-4">
+              <img
+                className="w-10 h-10 rounded-full object-cover"
+                src={user?.photoURL}
+                alt="profile"
+                title={user?.displayName}
+              />
+              <button
+                className="btn btn-sm md:btn-md text-sm md:text-base"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div className="flex gap-3">
+              <NavLink
+                to="/login"
+                className="btn btn-secondary btn-sm md:btn-md text-sm md:text-base"
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/register"
+                className="btn btn-secondary btn-sm md:btn-md text-sm md:text-base"
+              >
+                Register
+              </NavLink>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
