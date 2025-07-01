@@ -55,42 +55,48 @@ const Testimonial = () => {
   ];
 
   return (
-    <div className="rounded-2xl pt-16">
-      <h2 className="text-3xl text-secondary font-bold text-center mb-14">
-        What our client say?
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
-        {people.map((person, index) => (
-          <div
-            key={index}
-            className="bg-slate-50 flex flex-col w-full max-w-lg p-6 mx-auto rounded-md dark:bg-gray-50 dark:text-gray-800"
-          >
-            <div className="flex justify-between p-4">
-              <div className="flex space-x-4">
-                <img
-                  src={person.image}
-                  alt={person.name}
-                  className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
-                />
-                <div>
-                  <h4 className="font-bold">{person.name}</h4>
-                  <span className="text-xs dark:text-gray-600">
-                    {person.time}
-                  </span>
+    <section className="bg-gray-50 py-16 sm:py-24 lg:py-32"> {/* Added more vertical padding and a subtle background */}
+      <div className="container mx-auto px-4"> {/* Centralized container with horizontal padding */}
+        <div className="text-center mb-12 md:mb-16 lg:mb-20"> {/* Adjusted margin-bottom for responsiveness */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-800 leading-tight"> {/* Larger, bolder heading */}
+            What Our <span className="text-blue-600">Clients</span> Say
+          </h2>
+          <p className="mt-4 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto"> {/* Subheading with improved size and centering */}
+            Hear from users who are already benefiting from smart food management.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 xl:gap-10"> {/* Increased gap for larger screens */}
+          {people.map((person, index) => (
+            <div
+              key={index} // Consider using a unique ID from your data instead of index if possible for better performance
+              className="bg-white rounded-xl shadow-lg p-6 sm:p-8 flex flex-col h-full transform transition-transform duration-300 hover:scale-[1.02]" // Enhanced styling, padding, and hover effect
+            >
+              <div className="flex justify-between items-start mb-4"> {/* Aligned items better and added bottom margin */}
+                <div className="flex items-center space-x-4"> {/* Centered profile image and text vertically */}
+                  <img
+                    src={person.image}
+                    alt={person.name}
+                    className="object-cover w-14 h-14 rounded-full border-2 border-blue-400 flex-shrink-0" // Slightly larger image with a border
+                  />
+                  <div>
+                    <h4 className="font-semibold text-lg text-gray-900">{person.name}</h4> {/* Bolder, slightly larger name */}
+                    <span className="text-sm text-gray-500 mt-0.5">{person.time}</span> {/* Adjusted time font size and spacing */}
+                  </div>
+                </div>
+                <div className="flex items-center space-x-1"> {/* Tighter spacing for rating */}
+                  <FaStar color="#facc15" size={20} /> {/* Changed star color to a standard yellow */}
+                  <span className="text-xl font-bold text-gray-800">{person.rating}</span>
                 </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <FaStar color="orange" size={20} />
-                <span className="text-xl font-bold">{person.rating}</span>
+              <div className="flex-grow border-t border-gray-200 pt-4 mt-4"> {/* Used flex-grow to ensure consistent card height, adjusted border and padding */}
+                <p className="text-base text-gray-700 leading-relaxed">{person.message}</p> {/* Better line height for readability */}
               </div>
             </div>
-            <div className="p-4 space-y-2 text-sm border-t border-slate-300 dark:text-gray-600">
-              <p>{person.message}</p>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -2,76 +2,84 @@ import React from "react";
 
 const Faq = () => {
   return (
-    <div className="faq-wrapper md:my-24">
-      <h2 className="font-bold text-secondary text-xl md:text-3xl text-center my-8 md:my-12">
-        Frequently Asked Question
-      </h2>
-      <div className="collapse collapse-plus bg-base-100 border border-base-300">
-        <input type="radio" name="my-accordion-3" defaultChecked />
-        <div className="collapse-title font-semibold">
-          1. How does the tracker notify me of upcoming expiry dates?
-        </div>
-        <div className="collapse-content text-sm">
-          The website highlights foods that will expire within 5 days in the
-          "Nearly Expiry" section, so you can use them before they go bad.
-        </div>
+    <section className="faq-wrapper max-w-7xl mx-auto py-16 px-4 md:px-6">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
+          Frequently Asked Questions
+        </h2>
+        <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+          Have questions? We’ve got answers. Below you'll find common questions about using the app effectively.
+        </p>
       </div>
 
-      <div className="collapse collapse-plus bg-base-100 border border-base-300">
-        <input type="radio" name="my-accordion-3" />
-        <div className="collapse-title font-semibold">
-          2. Do I need to create an account to use the features?
+      <div className="space-y-4">
+        {/* Q1 */}
+        <div className="collapse collapse-plus bg-base-100 border border-base-300">
+          <input type="radio" name="faq" defaultChecked />
+          <div className="collapse-title text-base md:text-lg font-semibold">
+            1. How does the tracker notify me of upcoming expiry dates?
+          </div>
+          <div className="collapse-content text-sm md:text-base text-gray-700">
+            The website highlights foods that will expire within 5 days in the "Nearly Expiry" section, so you can use them before they go bad.
+          </div>
         </div>
-        <div className="collapse-content text-sm">
-          Yes, you'll need to register and log in to add, edit, or view your
-          personal food items. This keeps your data secure and personalized.
-        </div>
-      </div>
 
-      <div className="collapse collapse-plus bg-base-100 border border-base-300">
-        <input type="radio" name="my-accordion-3" />
-        <div className="collapse-title font-semibold">
-          Can I edit or delete my added food items?
+        {/* Q2 */}
+        <div className="collapse collapse-plus bg-base-100 border border-base-300">
+          <input type="radio" name="faq" />
+          <div className="collapse-title text-base md:text-lg font-semibold">
+            2. Do I need to create an account to use the features?
+          </div>
+          <div className="collapse-content text-sm md:text-base text-gray-700">
+            Yes, you'll need to register and log in to add, edit, or view your personal food items. This keeps your data secure and personalized.
+          </div>
         </div>
-        <div className="collapse-content text-sm">
-          Absolutely! Go to the My Items page where you can update or delete any
-          of your added items using the action buttons.
-        </div>
-      </div>
 
-      <div className="collapse collapse-plus bg-base-100 border border-base-300">
-        <input type="radio" name="my-accordion-3" />
-        <div className="collapse-title font-semibold">
-          4. Can I add personal notes to a food item?
+        {/* Q3 */}
+        <div className="collapse collapse-plus bg-base-100 border border-base-300">
+          <input type="radio" name="faq" />
+          <div className="collapse-title text-base md:text-lg font-semibold">
+            3. Can I edit or delete my added food items?
+          </div>
+          <div className="collapse-content text-sm md:text-base text-gray-700">
+            Absolutely! Go to the My Items page where you can update or delete any of your added items using the action buttons.
+          </div>
         </div>
-        <div className="collapse-content text-sm">
-          Yes! On the Food Details page, if you're the one who added the item,
-          you can write and save personal notes for that food.
-        </div>
-      </div>
 
-      <div className="collapse collapse-plus bg-base-100 border border-base-300">
-        <input type="radio" name="my-accordion-3" />
-        <div className="collapse-title font-semibold">
-          5. Is my data secure?
+        {/* Q4 */}
+        <div className="collapse collapse-plus bg-base-100 border border-base-300">
+          <input type="radio" name="faq" />
+          <div className="collapse-title text-base md:text-lg font-semibold">
+            4. Can I add personal notes to a food item?
+          </div>
+          <div className="collapse-content text-sm md:text-base text-gray-700">
+            Yes! On the Food Details page, if you're the one who added the item, you can write and save personal notes for that food.
+          </div>
         </div>
-        <div className="collapse-content text-sm">
-          Yes. We use Firebase Authentication and secure API routes with JWT to
-          ensure that your data is protected and accessible only to you.
-        </div>
-      </div>
 
-      <div className="collapse collapse-plus bg-base-100 border border-base-300">
-        <input type="radio" name="my-accordion-3" />
-        <div className="collapse-title font-semibold">
-          6. Is this web app mobile-friendly?
+        {/* Q5 */}
+        <div className="collapse collapse-plus bg-base-100 border border-base-300">
+          <input type="radio" name="faq" />
+          <div className="collapse-title text-base md:text-lg font-semibold">
+            5. Is my data secure?
+          </div>
+          <div className="collapse-content text-sm md:text-base text-gray-700">
+            Yes. We use Firebase Authentication and secure API routes with JWT to ensure that your data is protected and accessible only to you.
+          </div>
         </div>
-        <div className="collapse-content text-sm">
-          Yes, the entire application is fully responsive and works smoothly on
-          mobile phones, tablets, and desktops.
+
+        {/* Q6 */}
+        <div className="collapse collapse-plus bg-base-100 border border-base-300">
+          <input type="radio" name="faq" />
+          <div className="collapse-title text-base md:text-lg font-semibold">
+            6. Is this web app mobile-friendly?
+          </div>
+          <div className="collapse-content text-sm md:text-base text-gray-700">
+            Yes, the entire application is fully responsive and works smoothly on mobile phones, tablets, and desktops.
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
