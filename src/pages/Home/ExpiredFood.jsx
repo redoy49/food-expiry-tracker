@@ -4,10 +4,19 @@ import CountUp from "react-countup";
 
 const ExpiredFood = ({ expired }) => {
   return (
-    <section className="py-16 px-4 md:px-6 lg:px-10 max-w-[1440px] mx-auto">
-      <h2 className="text-3xl text-secondary text-center font-bold mb-12">
-        Total Expired Foods: <CountUp duration={3} start={0} end={expired.length} />
-      </h2>
+    <section className="px-4 md:px-6 lg:px-10 max-w-[1440px] mx-auto pb-14">
+      <header className="text-center mb-10 md:mb-12 lg:mb-16">
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-gray-100 leading-tight">
+          Total Expired Foods -
+          <span className="text-green-600">
+            <CountUp duration={3} start={0} end={expired.length} />
+          </span>
+        </h2>
+        <p className="mt-4 max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 dark:text-gray-300">
+          Track your expired items at a glance and take action before it's too
+          late.
+        </p>
+      </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {expired.map((item) => (
@@ -18,7 +27,7 @@ const ExpiredFood = ({ expired }) => {
                 alt={item.foodTitle}
                 className="w-full h-48 object-contain rounded-t-xl p-6 pb-0"
               />
-              <div className="absolute top-3 right-3 bg-secondary text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+              <div className="absolute top-3 right-3 bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
                 Expired
               </div>
             </div>

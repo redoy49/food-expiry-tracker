@@ -94,7 +94,7 @@ const UpdateFoodModal = ({ food, onClose, onSubmit }) => {
           </div>
 
           <div className="modal-action flex justify-between">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn bg-green-600 text-white">
               Update Info
             </button>
             <button type="button" className="btn btn-ghost" onClick={onClose}>

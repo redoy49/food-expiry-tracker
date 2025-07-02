@@ -33,7 +33,10 @@ const MyItems = () => {
 
   const handleUpdateFood = async (updatedData) => {
     try {
-      const res = await axiosSecure.patch(`/update-food/${selectedFood._id}`, updatedData);
+      const res = await axiosSecure.patch(
+        `/update-food/${selectedFood._id}`,
+        updatedData
+      );
 
       if (res.data.modifiedCount > 0) {
         Swal.fire("Updated!", "Your food was updated successfully.", "success");
@@ -45,7 +48,11 @@ const MyItems = () => {
         setIsModalOpen(false);
         setSelectedFood(null);
       } else {
-        Swal.fire("No Changes", "No changes were made to the food item.", "info");
+        Swal.fire(
+          "No Changes",
+          "No changes were made to the food item.",
+          "info"
+        );
       }
     } catch (err) {
       console.error("Update failed", err);
@@ -70,13 +77,21 @@ const MyItems = () => {
             if (res.data.deletedCount) {
               const deleteFood = foods.filter((food) => food._id !== _id);
               setFoods(deleteFood);
-              Swal.fire("Deleted!", "Your food item has been deleted.", "success");
+              Swal.fire(
+                "Deleted!",
+                "Your food item has been deleted.",
+                "success"
+              );
             } else {
               Swal.fire("Failed", "Could not delete the food item.", "error");
             }
           } catch (error) {
             console.error("Delete failed:", error);
-            Swal.fire("Error!", "Something went wrong while deleting.", "error");
+            Swal.fire(
+              "Error!",
+              "Something went wrong while deleting.",
+              "error"
+            );
           }
         }
       });
@@ -85,8 +100,16 @@ const MyItems = () => {
   );
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-3xl font-bold text-center mb-6">My Food Items</h2>
+    <div className="container mx-auto p-4 my-6">
+      <div className="text-center mb-6 max-w-2xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-gray-100">
+          My Food Items
+        </h2>
+        <p className="mt-3 text-lg text-gray-600 dark:text-gray-300">
+          Easily track and manage your food items to reduce waste and stay
+          organized.
+        </p>
+      </div>
 
       {loading ? (
         <div className="text-center my-10">Loading...</div>
@@ -126,7 +149,7 @@ const MyItems = () => {
                     <td>{new Date(item.expireDate).toLocaleDateString()}</td>
                     <td className="flex justify-center items-center space-x-2 h-full">
                       <button
-                        className="btn btn-sm btn-info text-white"
+                        className="btn btn-sm bg-green-600 text-white"
                         onClick={() => {
                           setSelectedFood(item);
                           setIsModalOpen(true);

@@ -9,6 +9,7 @@ import AddFood from "../pages/AddFood/AddFood";
 import MyItems from "../pages/MyItems/MyItems";
 import FoodDetails from "../pages/FoodDetails/FoodDetails";
 import PrivateRoute from "./PrivateRoute";
+import Blogs from "../pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/fridge",
         element: <Fridge />,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs />,
       },
       {
         path: "/add-food",

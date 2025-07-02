@@ -39,12 +39,12 @@ const AddFood = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="bg-white shadow-xl rounded-lg p-6 md:p-8 w-full max-w-2xl"> {/* Increased max-w for two columns */}
+      <div className="bg-white shadow-xl rounded-lg p-6 md:p-8 w-full max-w-2xl">
         <h2 className="text-4xl text-gray-800 mb-8 font-extrabold text-center">
           Add New Food Item
         </h2>
         <form onSubmit={handleAddFood} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6"> {/* Grid for two columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Column 1 */}
             <div>
               <div>
@@ -56,12 +56,12 @@ const AddFood = () => {
                   id="foodTitle"
                   name="foodTitle"
                   placeholder="e.g., Organic Apples"
-                  className="input input-bordered w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                  className="input input-bordered w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200"
                   required
                 />
               </div>
 
-              <div className="mt-6"> {/* Added margin top for spacing */}
+              <div className="mt-6">
                 <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
                   Category <span className="text-red-500">*</span>
                 </label>
@@ -69,7 +69,7 @@ const AddFood = () => {
                   id="category"
                   name="category"
                   defaultValue=""
-                  className="select select-bordered w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                  className="select select-bordered w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200"
                   required
                 >
                   <option value="" disabled>Select a category</option>
@@ -94,7 +94,7 @@ const AddFood = () => {
                   name="quantity"
                   placeholder="e.g., 50"
                   min="1"
-                  className="input input-bordered w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                  className="input input-bordered w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200"
                   required
                 />
               </div>
@@ -111,7 +111,7 @@ const AddFood = () => {
                   id="imageUrl"
                   name="imageUrl"
                   placeholder="https://example.com/food.jpg"
-                  className="input input-bordered w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                  className="input input-bordered w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200"
                 />
               </div>
 
@@ -123,7 +123,7 @@ const AddFood = () => {
                   type="date"
                   id="expireDate"
                   name="expireDate"
-                  className="input input-bordered w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                  className="input input-bordered w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200"
                   required
                 />
               </div>
@@ -144,7 +144,7 @@ const AddFood = () => {
           </div>
 
           {/* Description (full width) */}
-          <div className="pt-6"> {/* Added padding top to separate from columns */}
+          <div className="pt-6">
             <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
               Description
             </label>
@@ -153,13 +153,13 @@ const AddFood = () => {
               name="description"
               placeholder="Brief description of the food item..."
               rows="3"
-              className="textarea textarea-bordered w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+              className="textarea textarea-bordered w-full px-4 py-2 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200"
             ></textarea>
           </div>
 
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           >
             Add Food Item
           </button>

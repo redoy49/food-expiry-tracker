@@ -61,8 +61,8 @@ const Testimonial = () => {
   return (
     <section className="max-w-[1440px] mx-auto bg-gray-50 dark:bg-gray-900 rounded-lg px-4 py-8 sm:py-12 lg:py-16 md:px-6 lg:px-10">
       <header className="text-center mb-10 md:mb-12 lg:mb-16">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-800 dark:text-gray-100 leading-tight">
-          What Our <span className="text-blue-600">Clients</span> Say
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-800 dark:text-gray-100 leading-tight">
+          What Our <span className="text-green-600">Clients</span> Say
         </h2>
         <p className="mt-4 max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 dark:text-gray-300">
           Hear from users who are already benefiting from smart food management.

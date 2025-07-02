@@ -61,7 +61,7 @@ const Register = () => {
           Already have an account?
           <NavLink
             to="/login"
-            className="text-blue-600 hover:underline font-medium"
+            className="text-green-600 hover:underline font-medium"
           >
             Login now
           </NavLink>
@@ -135,7 +135,7 @@ const Register = () => {
           </div>
           <button
             type="submit"
-            className="w-full py-3 bg-slate-600 text-white font-semibold rounded-lg hover:bg-violet-700"
+            className="w-full py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700"
           >
             Register
           </button>

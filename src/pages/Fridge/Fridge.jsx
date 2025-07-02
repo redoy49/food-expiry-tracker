@@ -30,10 +30,10 @@ const Fridge = () => {
   }, [searchText, selectedCategory, axiosSecure]);
 
   return (
-    <div className="bg-gray-50 p-4 min-h-screen">
+    <div className="bg-gray-50 p-4 min-h-screen pb-14">
       <div className="max-w-[1440px] mx-auto flex flex-col items-center">
         {/* Heading Section */}
-        <div className="text-center mb-10 max-w-3xl">
+        <div className="text-center my-10 max-w-3xl">
           <h1 className="text-2xl md:text-4xl font-bold text-gray-800">Your Smart Fridge</h1>
           <p className="text-base md:text-lg text-gray-500 mt-3 leading-relaxed">
             Easily track, search, and manage your fridge items by category. Never let your groceries go to waste again.

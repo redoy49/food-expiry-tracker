@@ -73,7 +73,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full py-3 bg-slate-600 text-white font-semibold rounded-lg"
+            className="w-full py-3 bg-green-600 text-white font-semibold rounded-lg"
           >
             Login
           </button>
@@ -93,7 +93,7 @@ const Login = () => {
           Don’t have an account?
           <NavLink
             to="/register"
-            className="text-blue-500 hover:underline font-medium"
+            className="text-green-500 hover:underline font-medium"
           >
             Create account
           </NavLink>
