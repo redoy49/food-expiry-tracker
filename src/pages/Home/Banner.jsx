@@ -49,7 +49,7 @@ const Banner = () => {
         slidesPerView={1}
         pagination={{ clickable: true }}
         loop={true}
-        className="h-[65vh]" // Apply height directly to Swiper for better control
+        className="h-[60vh]" // Apply height directly to Swiper for better control
       >
         {bannerData.map((slide) => (
           <SwiperSlide key={slide.id}>

@@ -37,12 +37,12 @@ const MainLayout = () => {
       </div>
 
       {/* Page Content */}
-      <main className="flex-grow max-w-[1600px] mx-auto">
+      <main className="flex-grow max-w-[1440px] mx-auto">
         <Outlet />
       </main>
 
       {/* Full-width Footer background */}
-      <div className="bg-success text-success-content w-full">
+      <div className="bg-slate-100 w-full">
         <div className="max-w-[1440px] mx-auto">
           <Footer />
         </div>
