@@ -2,7 +2,7 @@ import React from "react";
 
 const Faq = () => {
   return (
-    <section className="faq-wrapper max-w-7xl mx-auto py-16 px-4 md:px-6">
+    <section className="max-w-[1440px] mx-auto py-16 px-4 md:px-6">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4">
           Frequently Asked Questions

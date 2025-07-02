@@ -66,10 +66,10 @@ const FoodDetails = () => {
 
   return (
     <div className="flex flex-col justify-center items-center p-1 lg:p-4">
-      <div className="w-full lg:max-w-4xl bg-pink-50 p-1">
+      <div className="w-full lg:max-w-4xl p-2">
         <img
           src={food?.imageUrl}
-          className="w-full aspect-video object-cover"
+          className="w-full aspect-video object-contain"
         />
       </div>
       <div className="w-full lg:max-w-4xl mt-6 bg-white p-4 rounded shadow space-y-2">

@@ -10,7 +10,7 @@ const FridgeCard = ({ food }) => {
             {/* Image + Expiry Badge */}
             <div className="relative">
                 <img
-                    className="w-full h-48 object-cover rounded-t-xl"
+                    className="w-full h-48 object-contain hover:scale-1.5 rounded-t-xl"
                     src={imageUrl}
                     alt={foodTitle}
                 />
@@ -37,7 +37,7 @@ const FridgeCard = ({ food }) => {
                 </div>
 
                 <Link to={`/food-details/${_id}`}>
-                    <button className="w-full bg-gray-800 text-white py-2 rounded-lg text-sm md:text-base hover:bg-gray-700 transition">
+                    <button className="w-full bg-green-800 text-white py-2 rounded-lg text-sm md:text-base hover:bg-green-700 transition">
                         See Details
                     </button>
                 </Link>

@@ -1,26 +1,3 @@
-// import React from "react";
-// import Footer from "../components/Footer";
-// import { Outlet } from "react-router";
-// import Home from "../pages/Home/Home";
-// import Header from "../components/Header";
-// import Navbar from "../components/Navbar";
-
-// const MainLayout = () => {
-//   return (
-//     <div className="max-w-[1280px] mx-auto min-h-screen">
-//       <Navbar />
-
-//       <main className="flex-grow py-8">
-//         <Outlet />
-//       </main>
-
-//       <Footer />
-//     </div>
-//   );
-// };
-
-// export default MainLayout;
-
 import React from "react";
 import Footer from "../components/Footer";
 import { Outlet } from "react-router";
@@ -28,25 +5,14 @@ import Navbar from "../components/Navbar";
 
 const MainLayout = () => {
   return (
-    <div className="min-h-screen">
-      {/* Full-width Navbar background */}
-      <div className="sticky top-0 z-50 w-full">
-        <div className="mx-auto">
-          <Navbar />
-        </div>
+    <div className="min-h-screen flex flex-col">
+      <div className="sticky top-0 z-50 w-full bg-white shadow">
+        <Navbar />
       </div>
-
-      {/* Page Content */}
-      <main className="flex-grow max-w-[1440px] mx-auto">
+      <main className="flex-grow">
         <Outlet />
       </main>
-
-      {/* Full-width Footer background */}
-      <div className="bg-slate-100 w-full">
-        <div className="max-w-[1440px] mx-auto">
-          <Footer />
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 };
