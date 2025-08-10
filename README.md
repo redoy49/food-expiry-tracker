@@ -161,5 +161,4 @@ This project was created as a full-stack development practice to implement authe
 
 ## 👤 Author
  
-🐦 Twitter: mdredoyhasan49  
 📧 Email: mdredoyhasan49@gmail.com
